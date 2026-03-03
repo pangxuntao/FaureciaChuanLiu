@@ -110,7 +110,7 @@ class ScanViewModel : BaseViewModel() {
             SoundUtil.success()
             viewModelScope.launch(Dispatchers.IO) {
                 val insertAll = userDao.insertAll(materialList.value!!.map {
-                    ScanBean(id = 0, box = currentBox.value ?: "", code = it.first, time = it.second)
+                    ScanBean(id = 0, code = it.first, time = it.second)
                 })
                 L.e("------------$insertAll")
                 withContext(Dispatchers.Main) {
