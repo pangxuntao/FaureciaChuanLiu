@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">层级防错</string>
+    <array name="entrty">
+        <item>从前往后</item>
+        <item>从后往前</item>
+    </array>
+</resources>

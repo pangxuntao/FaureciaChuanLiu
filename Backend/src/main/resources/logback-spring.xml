@@ -1,0 +1,89 @@
+<configuration>
+
+    <!-- 定义控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="COMMON" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/run.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/run.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>180</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+<!--    &lt;!&ndash; 定义文件输出 &ndash;&gt;-->
+<!--    <appender name="STATION_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>logs/record/station.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/record/station.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>180</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    <appender name="ABNORMAL_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>logs/record/abnormal.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/record/abnormal.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>180</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    <appender name="SETTING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>logs/record/settings.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/record/settings.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>180</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    <appender name="EXCEPTION_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>logs/exception/exception.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/exception/exception.%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>180</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    &lt;!&ndash; 定义 logger，按业务模块输出到不同文件 &ndash;&gt;-->
+<!--    <logger name="com.cainiao.sigemenbackend.service.StationService" level="INFO" additivity="false">-->
+<!--        <appender-ref ref="STATION_FILE"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="com.example.service.OrderService" level="INFO" additivity="false">-->
+<!--        <appender-ref ref="ABNORMAL_FILE"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="com.example.service.SettingService" level="INFO" additivity="false">-->
+<!--        <appender-ref ref="SETTING_FILE"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="com.cainiao.exception.GlobalExceptionHandler" level="INFO" additivity="false">-->
+<!--        <appender-ref ref="EXCEPTION_FILE"/>-->
+<!--    </logger>-->
+
+    <!-- root logger -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="COMMON"/>
+    </root>
+
+</configuration>

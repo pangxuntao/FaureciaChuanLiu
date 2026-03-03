@@ -1,0 +1,42 @@
+import java.text.SimpleDateFormat
+
+android {
+    flavorDimensions "default"
+    productFlavors {
+        Call料 {
+            applicationId = "com.cainiao.chuanliu.call"
+            buildConfigField("String", "BASE_URL", "\"http://norskytech.com:8880\"")
+            buildConfigField("String", "SYSTEM_NAME", "\"\"")
+            manifestPlaceholders = [
+                    "app-name": "Call料",
+                    "mainClass":".CallActivity"
+            ]
+        }
+        装料拉动 {
+            applicationId = "com.cainiao.chuanliu.load"
+            buildConfigField("String", "BASE_URL", "\"http://norskytech.com:8880\"")
+            buildConfigField("String", "SYSTEM_NAME", "\"\"")
+            manifestPlaceholders = [
+                    "app-name": "装料拉动",
+                    "mainClass":".LoadActivity"
+            ]
+        }
+        PAD {
+            applicationId = "com.cainiao.chuanliu.pad"
+            buildConfigField("String", "BASE_URL", "\"http://norskytech.com:8880\"")
+            buildConfigField("String", "SYSTEM_NAME", "\"\"")
+            manifestPlaceholders = [
+                    "app-name": "川流-零配件防错",
+                    "mainClass":".PadMainActivity"
+            ]
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def sdf = new SimpleDateFormat("MMddHHmm")
+            def date = sdf.format(new Date())
+            def v = variant.name.replace("Release", "")
+            outputFileName = "${v}-VN${variant.versionName}-VC${variant.versionCode}-${date}.apk"
+        }
+    }
+}
