@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textColor="#ddd"
-        android:textSize="@dimen/sp_14" />
+        android:textSize="@dimen/sp_12" />
 
     <TextView
         android:id="@+id/tv2"
@@ -20,22 +20,22 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textColor="#fff"
-        android:textSize="@dimen/sp_14" />
+        android:textSize="@dimen/sp_12" />
 
     <TextView
         android:id="@+id/tv3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:textColor="#ddd"
-        android:textSize="@dimen/sp_14" />
+        android:textSize="@dimen/sp_12" />
 
     <TextView
         android:id="@+id/tv4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.8"
         android:textColor="#ddd"
-        android:textSize="@dimen/sp_14" />
+        android:textSize="@dimen/sp_12" />
 
 </LinearLayout>
