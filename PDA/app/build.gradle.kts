@@ -11,9 +11,9 @@ android {
     defaultConfig {
         applicationId = "com.cainiao.chuanliu.pda"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 30
         versionCode = 1
-        versionName = "V1.0.0"
+        versionName = "V1.0.1"
     }
 
     buildTypes {
@@ -31,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     lint {
         abortOnError = false
@@ -47,38 +47,63 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.10.0")
-    implementation(group = "com.squareup.okhttp3", name = "logging-interceptor", version = "4.10.0")
-    implementation(group = "com.squareup.retrofit2", name = "retrofit", version = "2.11.0")
-    implementation(group = "com.squareup.retrofit2", name = "retrofit", version = "2.11.0")
-    implementation(group = "com.squareup.retrofit2", name = "converter-gson", version = "2.11.0")
-    implementation(group = "com.squareup.retrofit2", name = "adapter-rxjava3", version = "2.11.0")
-    implementation(group = "io.reactivex.rxjava3", name = "rxjava", version = "3.1.8")
-    implementation(group = "io.reactivex.rxjava3", name = "rxandroid", version = "3.0.1")
-    implementation(group = "io.reactivex.rxjava3", name = "rxkotlin", version = "3.0.1")
-    implementation(group = "com.github.getActivity", name = "ToastUtils", version = "10.5")
+    // --- AndroidX 核心库 ---
+    implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("com.google.android.material:material:1.6.1")
 
-    val room_version = "2.5.0"
-    kapt(libs.room.compiler)
-    implementation(group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version = "1.8.0")
-    implementation(group = "androidx.room", name = "room-runtime", version = room_version)
-    implementation(group = "androidx.room", name = "room-ktx", version = room_version)
-    implementation(group = "androidx.room", name = "room-rxjava2", version = room_version)
-    implementation(group = "androidx.room", name = "room-guava", version = room_version)
-    implementation(group = "androidx.room", name = "room-paging", version = room_version)
+    // --- Kotlin 标准库 ---
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
+
+    // --- OkHttp & Retrofit ---
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.retrofit2:adapter-rxjava3:2.11.0")
+
+    // --- RxJava3 ---
+    implementation("io.reactivex.rxjava3:rxjava:3.1.8")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.1")
+    implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
+
+    // --- Room 数据库 ---
+    var room_version = "2.4.3"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.room:room-rxjava2:$room_version")
+    implementation("androidx.room:room-paging:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    // --- Coroutines ---
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+
+    // --- Lifecycle / ViewModel / LiveData ---
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
+    // --- PermissionX ---
     implementation("com.guolindev.permissionx:permissionx:1.8.0")
-    implementation(group = "org.apache.poi", name = "poi", version = "3.9")
-    implementation(group = "org.apache.poi", name = "poi-excelant", version = "3.9")
-    implementation(group = "org.apache.poi", name = "poi-scratchpad", version = "3.9")
+
+    // --- ToastUtils ---
+    implementation("com.github.getActivity:ToastUtils:10.5")
+
+    // --- Apache POI (Excel 处理) ---
+    implementation("org.apache.poi:poi:3.9")
+    implementation("org.apache.poi:poi-excelant:3.9")
+    implementation("org.apache.poi:poi-scratchpad:3.9")
+
+    // --- 本地 AAR 包 ---
     implementation(files("libs/com.cainiao.myexcel.1.0.aar"))
     implementation(files("libs/com.cainiao.mycommon.1.0.aar"))
     implementation(files("libs/com.cainiao.mywidget.1.0.aar"))
+
+    // --- DataBinding ---
+    implementation("androidx.databinding:databinding-runtime:7.4.2")
+    implementation("androidx.databinding:databinding-adapters:7.4.2")
+    implementation("androidx.databinding:databinding-ktx:7.4.2")
 }
 kapt {
     correctErrorTypes = true

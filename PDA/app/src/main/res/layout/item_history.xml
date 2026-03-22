@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.5"
         android:textColor="#ddd"
+        android:paddingHorizontal="@dimen/dp_1"
         android:textSize="@dimen/sp_12" />
 
     <TextView

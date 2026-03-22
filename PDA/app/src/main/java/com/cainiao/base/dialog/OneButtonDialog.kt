@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.cainiao.base.util.ActivityManager
+import com.cainiao.chuanliu.databinding.DialogErrorBinding
 import com.cainiao.chuanliu.databinding.DialogOneButtonBinding
 import com.cainiao.chuanliu.databinding.DialogTwoButtonBinding
 
@@ -85,6 +86,45 @@ class TwoButtonDialog(
             dismiss()
         }
         isCancelable = cancelable
+        return binding.root
+    }
+}
+class ErrorDialog(
+    val title: String,
+    val msg: String,
+    val code1: String,
+    val code2: String,
+    val code3: String,
+    val onclick: ((Boolean) -> Unit)? = null,
+    val confirmText: String? = null,
+    val cancelText: String? = null,
+) : DialogFragment() {
+
+    private val binding by lazy {
+        DialogErrorBinding.inflate(layoutInflater, null, false)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding.title.text = title
+        binding.msg.text = msg
+        binding.code1.text = code1
+        binding.code2.text = code2
+        binding.code3.text = code3
+        confirmText?.let {
+            binding.confirm.text = it
+        }
+        cancelText?.let {
+            binding.cancel.text = it
+        }
+        binding.confirm.setOnClickListener {
+            onclick?.invoke(true)
+            dismiss()
+        }
+        binding.cancel.setOnClickListener {
+            onclick?.invoke(false)
+            dismiss()
+        }
+        isCancelable = false
         return binding.root
     }
 }

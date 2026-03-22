@@ -13,7 +13,7 @@ import com.cainiao.myexcel.MyExcel
 import java.io.File
 
 object FileUtil {
-    val PATH = "${App.app.getExternalFilesDir("")}"
+    val PATH = "${FileUtils.getSDCardPath()}/ChuanLiu"
     val EXPORT = "$PATH/export"
     val IMPORT = "$PATH/import"
 
@@ -33,7 +33,7 @@ object FileUtil {
     }
 
     fun export(date: String, data: List<ScanBean>, onSuccess: (Boolean) -> Unit) {
-        val dataPath = "$PATH/$date.xlsx"
+        val dataPath = "$EXPORT/$date.xlsx"
         MyExcel.write(dataPath, ScanBean::class.java, data) {
             L.e(dataPath)
             L.e(it)

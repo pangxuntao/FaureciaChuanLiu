@@ -13,6 +13,9 @@ interface ScanBeanDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(data: List<ScanBean>): List<Long>
 
+    @Query("SELECT * FROM scanData where code=:code")
+    fun find(code: String): ScanBean?
+
     @Query("SELECT * FROM scanData where time>:start and time<:end")
     fun getAllScanBean(start:Long,end:Long): List<ScanBean>
 

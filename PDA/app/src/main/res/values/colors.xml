@@ -15,4 +15,5 @@
     <color name="primary_dark_dark2">#253352</color>
     <color name="prey">#999999</color>
     <color name="primary_pressed">#3EA0FF</color>
+    <color name="red">#f00</color>
 </resources>

@@ -28,6 +28,8 @@ class ExportActivity : BaseActivity<ExportViewModel, ActivityExportBinding>(R.la
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
             ).request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
+                    println("pxtExport startTime2: ${FormatUtil.formatDate(startTime,"yyyy-MM-dd HH:mm:ss")}")
+                    println("pxtExport endTime2: ${FormatUtil.formatDate(endTime + 24L * 60 * 60 * 1000,"yyyy-MM-dd HH:mm:ss")}")
                     viewModel.export(
                         binding.startTime.text.toString() + "_" + binding.endTime.text.toString(),
                         startTime,
@@ -59,8 +61,10 @@ class ExportActivity : BaseActivity<ExportViewModel, ActivityExportBinding>(R.la
         datePicker.show(supportFragmentManager, "date_picker")
 
         datePicker.addOnPositiveButtonClickListener { selection ->
-            startTime = selection.first
-            endTime = selection.second
+            startTime = selection.first - 8L * 60 * 60 * 1000
+            endTime = selection.second - 8L * 60 * 60 * 1000
+            println("pxtExport startTime: ${FormatUtil.formatDate(startTime,"yyyy-MM-dd HH:mm:ss")}")
+            println("pxtExport endTime: ${FormatUtil.formatDate(endTime,"yyyy-MM-dd HH:mm:ss")}")
             binding.startTime.text = FormatUtil.formatDate(startTime,"yyyy-MM-dd")
             binding.endTime.text = FormatUtil.formatDate(endTime,"yyyy-MM-dd")
             binding.export.isEnabled = true

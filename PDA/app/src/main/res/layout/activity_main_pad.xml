@@ -133,6 +133,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/sp_16" />
+                    <TextView
+                        android:id="@+id/error2"
+                        android:textColor="#f00"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_16" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -167,6 +173,7 @@
                             android:src="@drawable/ic_login_clear" />
 
                         <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/confirm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_button"

@@ -10,6 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="#f1f1f1"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -24,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dp_10"
                 android:text="导出时间:"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp_16" />
 
             <TextView
@@ -35,6 +37,7 @@
                 android:gravity="center"
                 android:padding="@dimen/dp_3"
                 android:text="开始时间"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp_16" />
 
             <TextView
@@ -42,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_5"
                 android:text="至"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp_16" />
 
             <TextView
@@ -53,24 +57,26 @@
                 android:gravity="center"
                 android:padding="@dimen/dp_3"
                 android:text="结束时间"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp_16" />
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/export"
             style="@style/Button"
+            android:background="@drawable/bg_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:enabled="false"
             android:text="导出"
             android:textSize="@dimen/sp_20"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="2.5"
+            app:layout_constraintDimensionRatio="1.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3"
-            app:layout_constraintWidth_percent="0.5" />
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.2" />
 
         <Button
             android:id="@+id/clear"
@@ -84,6 +90,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.3"
-            app:layout_constraintWidth_percent="0.25" />
+            app:layout_constraintWidth_percent="0.2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
